@@ -1,0 +1,127 @@
+{
+	"info": {
+		"_postman_id": "deac6506-3ba7-4dda-8f60-1c9867d93ca7",
+		"name": "DogApi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "47882631"
+	},
+	"item": [
+		{
+			"name": "Get all Dogs",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"name\": \"Buddy\",\r\n \"weight\": 20\r\n }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:4000/dogs"
+			},
+			"response": []
+		},
+		{
+			"name": "Add dog",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"name\": \"lol\",\r\n \"weight\": 20\r\n }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:4000/dogs"
+			},
+			"response": []
+		},
+		{
+			"name": "Create a Dog",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"name\": \"Buddy\",\r\n \"weight\": 20\r\n }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:4000/dogs"
+			},
+			"response": []
+		},
+		{
+			"name": "Get dog by ID",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"name\": \"Chutiya\",\r\n \"weight\": 20\r\n }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:4000/dogs/1"
+			},
+			"response": []
+		},
+		{
+			"name": "Update_dog_namebyID",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"name\": \"Chutiya\",\r\n \"weight\": 20\r\n }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:4000/dogs/3"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Dog by ID",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"name\": \"Chutiya\",\r\n \"weight\": 20\r\n }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:4000/dogs/4"
+			},
+			"response": []
+		}
+	]
+}
