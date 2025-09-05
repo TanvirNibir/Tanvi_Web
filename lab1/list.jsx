@@ -25,7 +25,7 @@ function List() {
   const listItems = fruits.map(fruits => <li> {fruits.name}</li>);
   
   return (<ul> {listItems}</ul>)
-                                                             Order list 
+                                                             //Order list 
 }
 
 export default List
