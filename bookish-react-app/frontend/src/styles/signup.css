@@ -1,0 +1,132 @@
+.signup-box {
+  max-width: 400px;
+  margin: 2rem auto;
+  padding: 2rem;
+  border: 1px solid #000000;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.85);
+  /* slightly more opaque */
+}
+
+.home {
+  background: url("../img/istockphoto-929023224-612x612 1.png") center/cover no-repeat;
+  min-height: 100vh;
+  /* full page height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.signup-heading {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #080808;
+}
+
+.input-field {
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.input-field input {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #0ca4ca;
+  border-radius: 4px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+/* Error message */
+.error {
+  color: #e63946;
+  font-size: 0.9rem;
+  margin-top: -0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Password strength indicator */
+.strength {
+  font-size: 0.85rem;
+  margin: -0.5rem 0 0.75rem;
+  font-weight: bold;
+}
+
+.strength.weak {
+  color: #e63946;
+  /* red */
+}
+
+.strength.medium {
+  color: #ff9f1c;
+  /* orange */
+}
+
+.strength.strong {
+  color: #2a9d8f;
+  /* green */
+}
+
+/* Password container for toggle/suggest buttons */
+.password-container {
+  display: flex;
+  align-items: center;
+}
+
+.password-container input {
+  flex: 1;
+}
+
+/* Toggle and Suggest buttons */
+.toggle-btn,
+.suggest-btn {
+  margin-left: 0.5rem;
+  padding: 0.45rem 0.75rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: all 0.2s ease-in-out;
+}
+
+.toggle-btn {
+  background-color: #0ca4ca;
+  color: white;
+}
+
+.toggle-btn:hover {
+  background-color: #09738c;
+}
+
+.suggest-btn {
+  background-color: #f4a261;
+  color: white;
+}
+
+.suggest-btn:hover {
+  background-color: #e76f51;
+}
+
+/* Submit button */
+button[type="submit"] {
+  width: 100%;
+  padding: 0.6rem;
+  background-color: #0ca4ca;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s ease-in-out;
+}
+
+button[type="submit"]:hover {
+  background-color: #09738c;
+}
+
+button[disabled] {
+  background-color: #b0c4c9;
+  cursor: not-allowed;
+}

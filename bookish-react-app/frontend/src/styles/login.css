@@ -1,0 +1,40 @@
+.home {
+  background: url("../img/istockphoto-929023224-612x612 1.png") center/cover no-repeat;
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  /* full page height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.sign-box{
+  max-width: 400px;
+  margin: 2rem auto;
+  padding: 2rem;
+  border: 1px solid #000000;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.308);
+}
+.btn {
+  background-color: #ffffff;
+  color: #000000;
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  opacity: 199;
+  transition: opacity 0.3s ease;
+  text-decoration: none;
+  font-weight: bold;
+  margin: 0 10px;
+  display: inline-block;
+  text-align: center;
+  caption-side: bottom;
+}
+
+.btn:hover {
+  opacity: 1;
+}

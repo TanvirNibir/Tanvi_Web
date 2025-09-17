@@ -1,41 +1,43 @@
 import { useState, useEffect } from 'react';
 
+
 const UseEffectTest = () => {
-    const [toggleOne, setToggleOne] = useState(false);
-    const [toggleTwo, setToggleTwo] = useState(false);
-    const [count, setCount] = useState(0);
+  const [toggleOne, setToggleOne] = useState(false);
+  const [toggleTwo, setToggleTwo] = useState(false);
+  const [count, setCount] = useState(0);
 
-    useEffect(() => {
-        console.log("UseEffect1 ran")
-    }, []);
+  useEffect(() => {
+    console.log("UseEffect1 ran");
+  }, []);
 
-    useEffect(() => {
-        console.log('UseEffect2 Ran');
-        if (toggleTwo) {
-            console.log("toggleTwo slice of state is true so this code runs");
-        }
-        }, [toggleTwo]);
+  useEffect(() => {
+    console.log('UseEffect2 Ran');
+    if (toggleTwo) {
+      console.log("toggleTwo slice of state is true so this code runs");
+    }
+  }, [toggleTwo]);
 
-    useEffect(() => {
-        let myInterval = setInterval(() => {
-        console.log(`UseEffect3 with interval number ${count} is running`);
-       }, 1000);
+  useEffect(() => {
+    const myInterval = setInterval(() => {
+      console.log(`UseEffect3 with interval number ${count} is running`);
+    }, 1000);
 
-       return () => {
-        console.log(`UseEffect3 cleanup ran. \nsetInterval number ${count} is being cleared out`)
-        clearInterval(myInterval);
-    }; 
-    }, [count]);
+    return () => {
+      console.log(`UseEffect3 cleanup ran. setInterval number ${count} is being cleared out`);
+      clearInterval(myInterval);
+    };
+  }, [count]);
 
-    return(
+  return (
     <div>
-        {console.log("rendered or re-rendered")}
-        <h1>This is UseEffectTest component</h1>
-        <p>Count: {count}</p>
-        <button onClick={() => setToggleOne(!toggleOne)}>ToggleOne</button>
-        <button onClick={() => setToggleTwo(!toggleTwo)}>ToggleTwo</button>
-        <button onClick={() => setCount(c => c+1)}>Increment count</button>
-    </div>);
+      {console.log("rendered or re-rendered")}
+      <h1>This is UseEffectTest component</h1>
+      <p>Count: {count}</p>
+      <button onClick={() => setToggleOne(prev => !prev)}>ToggleOne</button>
+      <button onClick={() => setToggleTwo(prev => !prev)}>ToggleTwo</button>
+      <button onClick={() => setCount(c => c + 1)}>Increment count</button>
+    </div>
+  );
 };
 
 export default UseEffectTest;

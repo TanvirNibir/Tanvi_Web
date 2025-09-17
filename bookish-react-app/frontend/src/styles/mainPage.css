@@ -1,0 +1,678 @@
+/*
+.page-layout {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  grid-template-rows: auto 1fr;
+  grid-template-areas:
+    "search filters"
+    "bookshelf content";
+  min-height: 100vh;
+  background: url("../img/main_page.jpg") center/cover no-repeat;
+  padding: 1rem;
+  gap: 1rem;
+}
+
+/* Search bar centered top-left * /
+.search-bar {
+  grid-area: search;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-bar input {
+  padding: 0.6rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  width: 250px;
+  font-size: 14px;
+}
+
+/* Filters - inside main page, top right * /
+.mainpage-filters {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  display: flex;
+  gap: 0.8rem;
+}
+
+.mainpage-filters button {
+  background: none;
+  border: 1px solid #44624a;
+  color: #44624a;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease-in-out;
+}
+
+.mainpage-filters button:hover {
+  background: #44624a;
+  color: #fff;
+  transform: scale(1.05);
+}
+
+.mainpage-filters button.active {
+  background: #44624a;
+  color: #fff;
+  font-weight: bold;
+}
+
+/* Bookshelf — stays LEFT * /
+.bookshelf {
+  grid-area: bookshelf;
+  background: #d8e3d0;
+  padding: 1rem;
+  border-radius: 12px;
+  width: 100%;
+}
+
+.shelf-title {
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 20px;
+  color: #44624a;
+}
+
+.shelf-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.book-slot {
+  width: 80px;
+  height: 120px;
+  background: #b8916c;
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.empty-slot {
+  width: 80px;
+  height: 120px;
+  background: #f0ede6;
+  border-radius: 6px;
+}
+
+.shelf-nav {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.nav-btn {
+  padding: 4px 8px;
+  background: #849074;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.nav-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+/* Right-side Add Button * /
+.side-add-btn {
+  grid-area: content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Inline add button inside bookshelf * /
+.inline-add-btn {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 6px;
+  background: #44624a;
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* Floating add button (bottom-right) * /
+.floating-add-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #44624a;
+  color: white;
+  font-size: 28px;
+  padding: 14px 18px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: 0.2s ease;
+}
+
+.floating-add-btn:hover {
+  background: #2f3e2f;
+  transform: scale(1.1);
+}
+
+/* Popup overlay covers whole screen * /
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Popup box * /
+.popup {
+  background: #fff;
+  padding: 1rem;
+  border-radius: 10px;
+  width: 300px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.popup h3 {
+  margin-bottom: 1rem;
+  text-align: center;
+  color: #44624a;
+}
+
+.popup input {
+  width: 100%;
+  padding: 8px;
+  margin: 6px 0;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.popup-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.popup-actions button {
+  background: #44624a;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.popup-actions button:hover {
+  background: #2f3e2f;
+}
+
+/* Inline add button (slot) * /
+.inline-add-btn {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 6px;
+  background: #44624a;
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* Book hover * /
+.book-shape {
+  background: #b8916c;
+  transition: 0.3s ease;
+}
+
+.book-shape:hover {
+  background: #a07a58;
+  transform: scale(1.05);
+}
+
+/* Popup fancy look * /
+.fancy-popup {
+  animation: popupFade 0.25s ease-out;
+  border: 2px solid #44624a;
+  background: #fdfdfd;
+  text-align: center;
+}
+
+@keyframes popupFade {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.popup-subtext {
+  font-size: 13px;
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+/* Popup buttons * /
+.status-btn {
+  flex: 1;
+  margin: 0.3rem;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: 0.25s;
+  font-weight: 500;
+}
+
+.status-btn:hover {
+  transform: scale(1.08);
+  opacity: 0.9;
+}
+
+.status-btn.tbr {
+  background: #ffe08a;
+}
+
+.status-btn.reading {
+  background: #a3d5ff;
+}
+
+.status-btn.read {
+  background: #b2f2bb;
+}
+
+.status-btn.notes {
+  background: #ffd6d6;
+}
+
+/* Status badge under book * /
+.book-status-badge {
+  text-align: center;
+  margin-top: 4px;
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 6px;
+  font-weight: bold;
+}
+
+.book-status-badge.tbr {
+  background: #ffe08a;
+  color: #664d00;
+}
+
+.book-status-badge.reading {
+  background: #a3d5ff;
+  color: #004466;
+}
+
+.book-status-badge.read {
+  background: #b2f2bb;
+  color: #004d1a;
+}
+
+/* Inline add button hover * /
+.inline-add-btn:hover {
+  background: #2f3e2f;
+  transform: scale(1.05);
+}
+
+/* Floating Search Bar - centered top * /
+.search-bar {
+  position: absolute;
+  top: 20px;
+  /* distance from top * /
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  /* stays above bookshelf * /
+}
+
+.search-bar input {
+  padding: 0.6rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  width: 320px;
+  font-size: 14px;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+/* Floating Filters - upper right but lowered * /
+.mainpage-filters {
+  position: absolute;
+  top: 80px;
+  /* pushed lower * /
+  right: 30px;
+  display: flex;
+  gap: 0.8rem;
+  z-index: 100;
+}
+*/
+
+/* enhanced usign llm 
+/* ------------------------------
+   Page Layout
+------------------------------ */
+.page-layout {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  grid-template-rows: auto 1fr;
+  grid-template-areas:
+    "search filters"
+    "bookshelf content";
+  min-height: 100vh;
+  background: url("../img/main_page.jpg") center/cover no-repeat;
+  padding: 1.5rem;
+  gap: 1.5rem;
+  font-family: 'Poppins', sans-serif;
+  color: #333;
+  position: relative;
+}
+
+/* ------------------------------
+   Search Bar (Top-Center)
+------------------------------ */
+.search-bar {
+  grid-area: search;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-bar input {
+  padding: 0.7rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 320px;
+  font-size: 15px;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  transition: all 0.25s ease;
+}
+
+.search-bar input:focus {
+  border-color: #44624a;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(68, 98, 74, 0.25);
+}
+
+/* ------------------------------
+   Filters (Top-Right, unchanged)
+------------------------------ */
+.mainpage-filters {
+  grid-area: filters;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1rem;
+}
+
+.mainpage-filters button {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid #44624a;
+  color: #44624a;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  transition: all 0.25s ease;
+}
+
+.mainpage-filters button:hover {
+  background: #44624a;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.mainpage-filters button.active {
+  background: #44624a;
+  color: #fff;
+  font-weight: 600;
+}
+
+/* ------------------------------
+   Bookshelf (Left Column)
+------------------------------ */
+.bookshelf {
+  grid-area: bookshelf;
+  background: rgba(230, 237, 226, 0.9);
+  padding: 1.2rem;
+  border-radius: 14px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(4px);
+}
+
+.shelf-title {
+  text-align: center;
+  margin-bottom: 1.2rem;
+  font-size: 20px;
+  font-weight: 600;
+  color: #2f3e2f;
+}
+
+.shelf-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  gap: 14px;
+}
+
+.book-slot,
+.empty-slot {
+  width: 80px;
+  height: 120px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.book-slot {
+  background: #b8916c;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.book-slot:hover {
+  background: #a07a58;
+  transform: scale(1.05);
+}
+
+.empty-slot {
+  background: #f0ede6;
+}
+
+.shelf-nav {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.nav-btn {
+  padding: 6px 12px;
+  background: #44624a;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.nav-btn:hover {
+  background: #2f3e2f;
+}
+
+.nav-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+/* ------------------------------
+   Add Buttons
+------------------------------ */
+.inline-add-btn {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 6px;
+  background: #44624a;
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.inline-add-btn:hover {
+  background: #2f3e2f;
+  transform: scale(1.05);
+}
+
+.floating-add-btn {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  background: #44624a;
+  color: white;
+  font-size: 28px;
+  padding: 14px 18px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+  transition: 0.25s ease;
+  z-index: 200;
+}
+
+.floating-add-btn:hover {
+  background: #2f3e2f;
+  transform: scale(1.1) translateY(-2px);
+}
+
+/* ------------------------------
+   Popup Styles
+------------------------------ */
+.popup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 500;
+}
+
+.popup {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  width: 320px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+  animation: popupFade 0.25s ease-out;
+}
+
+.popup h3 {
+  margin-bottom: 1rem;
+  font-size: 18px;
+  font-weight: 600;
+  color: #2f3e2f;
+}
+
+.popup input {
+  width: 100%;
+  padding: 10px;
+  margin: 6px 0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.popup-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.2rem;
+  gap: 0.8rem;
+}
+
+.popup-actions button {
+  flex: 1;
+  background: #44624a;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.popup-actions button:hover {
+  background: #2f3e2f;
+}
+
+@keyframes popupFade {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ------------------------------
+   Book Status Badges
+------------------------------ */
+.book-status-badge {
+  text-align: center;
+  margin-top: 4px;
+  font-size: 12px;
+  padding: 3px 6px;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+.book-status-badge.tbr {
+  background: #ffe08a;
+  color: #664d00;
+}
+
+.book-status-badge.reading {
+  background: #a3d5ff;
+  color: #004466;
+}
+
+.book-status-badge.read {
+  background: #b2f2bb;
+  color: #004d1a;
+}
+
+.book-status-badge.notes {
+  background: #ffd6d6;
+  color: #802020;
+}
